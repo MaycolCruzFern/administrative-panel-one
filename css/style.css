@@ -1,0 +1,287 @@
+.layout-principal {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* 250px para aside, el resto para el contenido */
+    grid-template-rows: auto 1fr auto; /* header, main, footer */
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Encabezado */
+.encabezado {
+    color: var(--color-plomo);
+    font-size: 14px;
+    height: 60px;
+    padding: 0 2%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-blanco);
+    border-bottom: 1px solid var(--border-plomo-claro);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    transition: all 0.3s ease;
+}
+
+.encabezado-izquierda, .encabezado-medio, .encabezado-derecha {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.encabezado-izquierda {
+    justify-content: flex-start;
+}
+
+.encabezado-medio {
+    justify-content: center;
+}
+
+.encabezado-derecha {
+    justify-content: flex-end;
+}
+
+.enc-navegacion ul{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.menu-btn {
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--color-plomo);
+}
+
+.menu-btn:hover {
+    color: var(--color-plomo-oscuro);
+}
+
+.item-navegacion:hover {
+    color: var(--color-plomo-oscuro);
+}
+
+/* Barra lateral */
+.barra-lateral {
+    font-size: 14px;
+    padding: 0 20px;
+    color: var(--color-blanco);
+    background-color: var(--color-tres);
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    box-shadow: 1px 0 8px rgba(0, 0, 0, 0.9);
+    transition: all 0.3s ease;
+}
+
+.logo-empresa {
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-plomo-claro);
+}
+
+.acceso-usuario {
+    height: 60px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-plomo-claro);
+}
+
+.nav-lateral {
+    margin: 20px 0;
+}
+
+.menu {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.enlace-item {
+    height: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.grupo-icono-texto {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.submenu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-left: 20px;
+    border-left: 1px solid var(--border-plomo-claro);
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+}
+
+.submenu.submenu-activo {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 10px;
+}
+
+.submenu li {
+    margin-left: 10px;
+}
+
+.lateral-item:hover {
+    color: var(--color-azul-ceniza);
+    cursor: pointer;
+}
+
+/* Contenido principal */
+.contenido {
+    padding: 20px 2%;
+    background-color: var(--color-dos);
+    min-height: calc(100vh - 90px);
+    margin-top: 60px;
+}
+
+/* Pie página */
+.pie-pagina {
+    color: var(--color-plomo);
+    font-size: 14px;
+    height: 30px;
+    padding: 0 2%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-blanco);
+    border-top: 1px solid var(--border-plomo-claro);
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    transition: all 0.3s ease;
+}
+
+/* Manejo de barra lateral */
+/* Aside abierto */
+.contenido {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+}
+
+/* Aside contraido */
+.layout-principal.contraido {
+    grid-template-columns: 70px 1fr;
+}
+
+.layout-principal.contraido .encabezado {
+    width: calc(100% - 70px);
+    margin-left: 70px;
+}
+
+.layout-principal.contraido .barra-lateral {
+    width: 70px;
+}
+
+.layout-principal.contraido .grupo-icono-texto {
+    justify-content: center;
+}
+
+.layout-principal.contraido .grupo-icono-texto span {
+    display: none;
+}
+
+.layout-principal.contraido .enlace-item > i {
+    display: none;
+}
+
+.layout-principal.contraido .pie-pagina {
+    width: calc(100% - 70px);
+    margin-left: 70px;
+}
+
+/************************************/
+/* Encabezado */
+
+/************************************/
+
+/* Aside contraido con efecto hover */
+.layout-principal.contraido-hover {
+    grid-template-columns: 70px 1fr;
+}
+
+.layout-principal.contraido-hover .barra-lateral {
+    width: 250px;
+}
+
+.layout-principal.contraido-hover .grupo-icono-texto {
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.layout-principal.contraido-hover .grupo-icono-texto span {
+    display: block;
+}
+
+.layout-principal.contraido-hover .enlace-item > i {
+    display: block;
+}
+
+@media(max-width: 850px) {
+
+    .barra-lateral {
+        left: -250px;
+        box-shadow: none;
+    }
+
+    .layout-principal.sidebar-activa .barra-lateral {
+        left: 0;
+    }
+
+    .contenido {
+        grid-column: 1 / 3;
+    }
+
+    .encabezado,
+    .pie-pagina {
+        margin-left: 0;
+        width: 100%;
+        left: 0;
+    }
+
+    .encabezado-medio, .encabezado-izquierda .enc-navegacion {
+        display: none; 
+    }
+
+    .pie-pagina {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .pie-pagina-izquierda, .pie-pagina-derecha {
+        display: none;
+    }
+}
